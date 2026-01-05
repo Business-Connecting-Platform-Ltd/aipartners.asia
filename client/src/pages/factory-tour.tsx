@@ -2,14 +2,7 @@
 
 import * as React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import {
-  ArrowRight,
-  ChevronDown,
-  Lock,
-  Phone,
-  Mail,
-  MapPin,
-} from "lucide-react";
+import { ArrowRight, ChevronDown, Lock, Phone, Mail, MapPin } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -155,18 +148,9 @@ const FAQ_DATA = [
 ];
 
 const PARTNERS = [
-  {
-    category: "AI Builders",
-    items: ["VFA", "IVS", "MDS", "TechAI", "DataLab"],
-  },
-  {
-    category: "IoT & Robotics",
-    items: ["RoboTech", "IoT Solutions", "AutoMate"],
-  },
-  {
-    category: "Cloud & Security",
-    items: ["CloudVN", "SecureNet", "DataGuard"],
-  },
+  { category: "AI Builders", items: ["VFA", "IVS", "MDS", "TechAI", "DataLab"] },
+  { category: "IoT & Robotics", items: ["RoboTech", "IoT Solutions", "AutoMate"] },
+  { category: "Cloud & Security", items: ["CloudVN", "SecureNet", "DataGuard"] },
   { category: "CRM & Training", items: ["SalesForce", "TrainAI", "EduTech"] },
 ];
 
@@ -174,49 +158,14 @@ const PARTNERS = [
 // COMPONENTS
 // ============================================================================
 
-const Container = ({
-  children,
-  className = "",
-  id,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  id?: string;
-}) => (
+const Container = ({ children, className = "", id }: { children: React.ReactNode; className?: string; id?: string }) => (
   <div id={id} className={`w-full max-w-7xl mx-auto px-6 lg:px-8 ${className}`}>
     {children}
   </div>
 );
 
-// Full width section wrapper to break out of layout constraints
-const FullWidthSection = React.forwardRef<
-  HTMLElement,
-  {
-    children: React.ReactNode;
-    className?: string;
-    style?: React.CSSProperties;
-    id?: string;
-  }
->(({ children, className = "", style = {}, id }, ref) => (
-  <section
-    ref={ref}
-    id={id}
-    className={`relative left-1/2 w-screen -translate-x-1/2 overflow-hidden ${className}`}
-    style={style}
-  >
-    {children}
-  </section>
-));
-FullWidthSection.displayName = "FullWidthSection";
-
 // Glow effect component
-const GlowOrb = ({
-  className = "",
-  color = COLORS.gold,
-}: {
-  className?: string;
-  color?: string;
-}) => (
+const GlowOrb = ({ className = "", color = COLORS.gold }: { className?: string; color?: string }) => (
   <div
     className={`absolute rounded-full blur-3xl pointer-events-none ${className}`}
     style={{ backgroundColor: color, opacity: 0.15 }}
@@ -224,20 +173,11 @@ const GlowOrb = ({
 );
 
 // Glass card component
-const GlassCard = ({
-  children,
-  className = "",
-  glow = false,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  glow?: boolean;
-}) => (
+const GlassCard = ({ children, className = "", glow = false }: { children: React.ReactNode; className?: string; glow?: boolean }) => (
   <div
     className={`relative backdrop-blur-xl border border-white/10 ${className}`}
     style={{
-      background:
-        "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
+      background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)',
       boxShadow: glow ? `0 0 60px -15px ${COLORS.gold}40` : undefined,
     }}
   >
@@ -249,10 +189,7 @@ export default function FactoryTour() {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [isSuccess, setIsSuccess] = React.useState(false);
   const heroRef = React.useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
@@ -265,58 +202,29 @@ export default function FactoryTour() {
   };
 
   return (
-    <div
-      className="min-h-screen overflow-x-hidden"
-      style={{
-        fontFamily: "'DM Sans', sans-serif",
-        backgroundColor: COLORS.cream,
-      }}
-    >
+    <div className="min-h-screen overflow-x-hidden" style={{ fontFamily: "'DM Sans', sans-serif", backgroundColor: COLORS.cream }}>
       <style jsx global>{`
-        @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap");
-        html {
-          scroll-behavior: smooth;
-        }
-        ::selection {
-          background: ${COLORS.gold};
-          color: ${COLORS.navy};
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+        html { scroll-behavior: smooth; }
+        ::selection { background: ${COLORS.gold}; color: ${COLORS.navy}; }
       `}</style>
 
       <main>
         {/* ========== HERO - Cinematic Full Screen ========== */}
-        <FullWidthSection
-          ref={heroRef}
-          className="h-screen flex items-center"
-          style={{ backgroundColor: COLORS.navy }}
-        >
+        <section ref={heroRef} className="relative h-screen flex items-center overflow-hidden" style={{ backgroundColor: COLORS.navy }}>
           {/* Background layers */}
-          <motion.div
-            style={{ opacity: heroOpacity, y: heroY }}
-            className="absolute inset-0"
-          >
+          <motion.div style={{ opacity: heroOpacity, y: heroY }} className="absolute inset-0">
             <img
               src="https://plus.unsplash.com/premium_photo-1682146773000-474a2592d2b0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt=""
               className="w-full h-full object-cover opacity-25"
             />
-            <div
-              className="absolute inset-0"
-              style={{
-                background: `radial-gradient(ellipse at 30% 50%, transparent 0%, ${COLORS.navy} 70%)`,
-              }}
-            />
+            <div className="absolute inset-0" style={{ background: `radial-gradient(ellipse at 30% 50%, transparent 0%, ${COLORS.navy} 70%)` }} />
           </motion.div>
 
           {/* Floating orbs */}
-          <GlowOrb
-            className="w-[500px] h-[500px] -top-24 -left-24"
-            color={COLORS.gold}
-          />
-          <GlowOrb
-            className="w-[300px] h-[300px] bottom-10 right-10"
-            color="#4F46E5"
-          />
+          <GlowOrb className="w-[500px] h-[500px] -top-24 -left-24" color={COLORS.gold} />
+          <GlowOrb className="w-[300px] h-[300px] bottom-10 right-10" color="#4F46E5" />
 
           {/* Abstract geometric shapes */}
           <div className="absolute top-1/4 right-1/4 w-48 h-48 border border-white/5 rounded-full" />
@@ -331,16 +239,8 @@ export default function FactoryTour() {
               >
                 {/* Overline with glow */}
                 <div className="inline-flex items-center gap-3 mb-4 lg:mb-6">
-                  <div
-                    className="h-px w-12"
-                    style={{
-                      background: `linear-gradient(90deg, ${COLORS.gold}, transparent)`,
-                    }}
-                  />
-                  <span
-                    className="text-[10px] lg:text-xs tracking-[0.25em] uppercase"
-                    style={{ color: COLORS.gold }}
-                  >
+                  <div className="h-px w-12" style={{ background: `linear-gradient(90deg, ${COLORS.gold}, transparent)` }} />
+                  <span className="text-[10px] lg:text-xs tracking-[0.25em] uppercase" style={{ color: COLORS.gold }}>
                     Factory Audit Tour 2026
                   </span>
                 </div>
@@ -356,8 +256,8 @@ export default function FactoryTour() {
                       className="relative z-10"
                       style={{
                         background: `linear-gradient(135deg, ${COLORS.gold} 0%, ${COLORS.goldLight} 50%, ${COLORS.gold} 100%)`,
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
                       }}
                     >
                       Mê Cung
@@ -372,21 +272,13 @@ export default function FactoryTour() {
                 </h1>
 
                 <p className="text-base lg:text-lg text-white/60 max-w-xl mb-6 lg:mb-8 leading-relaxed">
-                  Chương trình{" "}
-                  <span className="text-white/90 font-medium">
-                    Factory Audit Tour
-                  </span>{" "}
-                  giúp Ban lãnh đạo nhìn rõ hiện trạng và xây dựng lộ trình
-                  chuyển đổi số thực tế.
+                  Chương trình <span className="text-white/90 font-medium">Factory Audit Tour</span> giúp Ban lãnh đạo
+                  nhìn rõ hiện trạng và xây dựng lộ trình chuyển đổi số thực tế.
                 </p>
 
                 {/* CTA with glass effect */}
                 <div className="flex flex-wrap gap-3 mb-6 lg:mb-8">
-                  <a
-                    href={GOOGLE_FORM_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href={GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer">
                     <Button
                       className="h-11 lg:h-12 px-6 lg:px-8 rounded-full font-semibold text-sm lg:text-base transition-all duration-300 hover:scale-105 group"
                       style={{
@@ -408,16 +300,8 @@ export default function FactoryTour() {
                     { value: "6-8", label: "Đối tác" },
                     { value: "2-4", label: "Tuần" },
                   ].map((stat, idx) => (
-                    <GlassCard
-                      key={idx}
-                      className="px-4 lg:px-5 py-3 rounded-xl"
-                    >
-                      <div
-                        className="text-lg lg:text-xl font-bold"
-                        style={{ color: COLORS.gold }}
-                      >
-                        {stat.value}
-                      </div>
+                    <GlassCard key={idx} className="px-4 lg:px-5 py-3 rounded-xl">
+                      <div className="text-lg lg:text-xl font-bold" style={{ color: COLORS.gold }}>{stat.value}</div>
                       <div className="text-xs text-white/50">{stat.label}</div>
                     </GlassCard>
                   ))}
@@ -432,22 +316,15 @@ export default function FactoryTour() {
               transition={{ delay: 1 }}
               className="absolute bottom-4 left-1/2 -translate-x-1/2"
             >
-              <a
-                href="#about"
-                className="flex flex-col items-center gap-1 text-white/30 hover:text-white/50 transition-colors"
-              >
+              <a href="#about" className="flex flex-col items-center gap-1 text-white/30 hover:text-white/50 transition-colors">
                 <ChevronDown className="h-4 w-4 animate-bounce" />
               </a>
             </motion.div>
           </Container>
-        </FullWidthSection>
+        </section>
 
         {/* ========== ABOUT - Bento Grid Layout ========== */}
-        <FullWidthSection
-          id="about"
-          className="py-24 lg:py-32"
-          style={{ backgroundColor: COLORS.cream }}
-        >
+        <section id="about" className="py-24 lg:py-32 relative" style={{ backgroundColor: COLORS.cream }}>
           <Container>
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -455,18 +332,12 @@ export default function FactoryTour() {
               viewport={{ once: true }}
               className="mb-16"
             >
-              <span
-                className="text-xs tracking-[0.3em] uppercase mb-4 block"
-                style={{ color: COLORS.gold }}
-              >
+              <span className="text-xs tracking-[0.3em] uppercase mb-4 block" style={{ color: COLORS.gold }}>
                 Về chúng tôi
               </span>
               <h2
                 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight"
-                style={{
-                  color: COLORS.navy,
-                  fontFamily: "'Outfit', sans-serif",
-                }}
+                style={{ color: COLORS.navy, fontFamily: "'Outfit', sans-serif" }}
               >
                 Ba đơn vị, <br />
                 <span style={{ color: COLORS.gold }}>một sứ mệnh</span>
@@ -485,23 +356,14 @@ export default function FactoryTour() {
               >
                 <GlowOrb className="w-96 h-96 -top-20 -right-20" />
                 <div className="relative z-10 p-8 lg:p-12">
-                  <div
-                    className="text-8xl lg:text-9xl font-bold opacity-10 absolute top-4 right-8"
-                    style={{ color: COLORS.gold }}
-                  >
+                  <div className="text-8xl lg:text-9xl font-bold opacity-10 absolute top-4 right-8" style={{ color: COLORS.gold }}>
                     {ABOUT_DATA[0].title}
                   </div>
                   <div className="max-w-xl">
-                    <div
-                      className="text-sm font-medium mb-4"
-                      style={{ color: COLORS.gold }}
-                    >
+                    <div className="text-sm font-medium mb-4" style={{ color: COLORS.gold }}>
                       {ABOUT_DATA[0].subtitle}
                     </div>
-                    <h3
-                      className="text-3xl lg:text-4xl font-bold text-white mb-4"
-                      style={{ fontFamily: "'Outfit', sans-serif" }}
-                    >
+                    <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4" style={{ fontFamily: "'Outfit', sans-serif" }}>
                       Nền tảng kết nối doanh nghiệp
                     </h3>
                     <p className="text-white/60 leading-relaxed mb-6">
@@ -509,10 +371,7 @@ export default function FactoryTour() {
                     </p>
                     <div className="space-y-2">
                       {ABOUT_DATA[0].bullets.map((bullet) => (
-                        <div
-                          key={bullet}
-                          className="flex gap-3 text-white/70 text-sm"
-                        >
+                        <div key={bullet} className="flex gap-3 text-white/70 text-sm">
                           <span style={{ color: COLORS.gold }}>→</span>
                           <span>{bullet}</span>
                         </div>
@@ -529,9 +388,7 @@ export default function FactoryTour() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
                 className="col-span-12 lg:col-span-4 lg:row-span-2 relative overflow-hidden rounded-3xl"
-                style={{
-                  background: `linear-gradient(180deg, ${COLORS.navy} 0%, ${COLORS.navyLight} 100%)`,
-                }}
+                style={{ background: `linear-gradient(180deg, ${COLORS.navy} 0%, ${COLORS.navyLight} 100%)` }}
               >
                 <div className="absolute inset-0 opacity-30">
                   <img
@@ -541,22 +398,9 @@ export default function FactoryTour() {
                   />
                 </div>
                 <div className="relative z-10 p-8 h-full flex flex-col justify-end">
-                  <div
-                    className="text-5xl font-bold opacity-20 mb-4"
-                    style={{ color: COLORS.gold }}
-                  >
-                    AI
-                  </div>
-                  <div
-                    className="text-sm font-medium mb-2"
-                    style={{ color: COLORS.gold }}
-                  >
-                    {ABOUT_DATA[1].subtitle}
-                  </div>
-                  <h3
-                    className="text-2xl font-bold text-white mb-3"
-                    style={{ fontFamily: "'Outfit', sans-serif" }}
-                  >
+                  <div className="text-5xl font-bold opacity-20 mb-4" style={{ color: COLORS.gold }}>AI</div>
+                  <div className="text-sm font-medium mb-2" style={{ color: COLORS.gold }}>{ABOUT_DATA[1].subtitle}</div>
+                  <h3 className="text-2xl font-bold text-white mb-3" style={{ fontFamily: "'Outfit', sans-serif" }}>
                     {ABOUT_DATA[1].title}
                   </h3>
                   <p className="text-white/60 text-sm leading-relaxed mb-4">
@@ -564,10 +408,7 @@ export default function FactoryTour() {
                   </p>
                   <div className="space-y-1.5">
                     {ABOUT_DATA[1].bullets.map((bullet) => (
-                      <div
-                        key={bullet}
-                        className="flex gap-2 text-white/60 text-xs"
-                      >
+                      <div key={bullet} className="flex gap-2 text-white/60 text-xs">
                         <span style={{ color: COLORS.gold }}>•</span>
                         <span>{bullet}</span>
                       </div>
@@ -583,38 +424,21 @@ export default function FactoryTour() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
                 className="col-span-12 lg:col-span-8 relative overflow-hidden rounded-3xl border"
-                style={{ borderColor: COLORS.stone, backgroundColor: "white" }}
+                style={{ borderColor: COLORS.stone, backgroundColor: 'white' }}
               >
                 <div className="p-8 lg:p-10">
                   <div className="flex flex-col lg:flex-row gap-8">
                     <div className="flex-1">
-                      <div
-                        className="text-sm font-medium mb-2"
-                        style={{ color: COLORS.gold }}
-                      >
-                        {ABOUT_DATA[2].subtitle}
-                      </div>
-                      <h3
-                        className="text-2xl lg:text-3xl font-bold mb-3"
-                        style={{
-                          color: COLORS.navy,
-                          fontFamily: "'Outfit', sans-serif",
-                        }}
-                      >
-                        Cộng đồng{" "}
-                        <span style={{ color: COLORS.gold }}>1.000+</span>{" "}
-                        C-level
+                      <div className="text-sm font-medium mb-2" style={{ color: COLORS.gold }}>{ABOUT_DATA[2].subtitle}</div>
+                      <h3 className="text-2xl lg:text-3xl font-bold mb-3" style={{ color: COLORS.navy, fontFamily: "'Outfit', sans-serif" }}>
+                        Cộng đồng <span style={{ color: COLORS.gold }}>1.000+</span> C-level
                       </h3>
                       <p className="mb-4" style={{ color: COLORS.slate }}>
                         {ABOUT_DATA[2].desc}
                       </p>
                       <div className="space-y-2">
                         {ABOUT_DATA[2].bullets.map((bullet) => (
-                          <div
-                            key={bullet}
-                            className="flex gap-2 text-sm"
-                            style={{ color: COLORS.slate }}
-                          >
+                          <div key={bullet} className="flex gap-2 text-sm" style={{ color: COLORS.slate }}>
                             <span style={{ color: COLORS.gold }}>✓</span>
                             <span>{bullet}</span>
                           </div>
@@ -632,13 +456,10 @@ export default function FactoryTour() {
               </motion.div>
             </div>
           </Container>
-        </FullWidthSection>
+        </section>
 
         {/* ========== CHALLENGES ========== */}
-        <FullWidthSection
-          className="py-24 lg:py-32"
-          style={{ backgroundColor: COLORS.navy }}
-        >
+        <section className="py-24 lg:py-32 relative overflow-hidden" style={{ backgroundColor: COLORS.navy }}>
           <GlowOrb className="w-[600px] h-[600px] top-0 left-0" />
 
           <Container className="relative z-10">
@@ -648,10 +469,7 @@ export default function FactoryTour() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <span
-                  className="text-xs tracking-[0.3em] uppercase mb-4 block"
-                  style={{ color: COLORS.gold }}
-                >
+                <span className="text-xs tracking-[0.3em] uppercase mb-4 block" style={{ color: COLORS.gold }}>
                   Thách thức
                 </span>
                 <h2
@@ -659,8 +477,7 @@ export default function FactoryTour() {
                   style={{ fontFamily: "'Outfit', sans-serif" }}
                 >
                   Vì sao nhà máy dễ lạc trong{" "}
-                  <span style={{ color: COLORS.gold }}>'mê cung'</span> chuyển
-                  đổi số?
+                  <span style={{ color: COLORS.gold }}>'mê cung'</span> chuyển đổi số?
                 </h2>
 
                 <div className="space-y-4">
@@ -675,10 +492,7 @@ export default function FactoryTour() {
                     >
                       <div
                         className="h-8 w-8 rounded-lg flex items-center justify-center shrink-0 text-sm font-bold"
-                        style={{
-                          backgroundColor: `${COLORS.gold}20`,
-                          color: COLORS.gold,
-                        }}
+                        style={{ backgroundColor: `${COLORS.gold}20`, color: COLORS.gold }}
                       >
                         {idx + 1}
                       </div>
@@ -695,10 +509,7 @@ export default function FactoryTour() {
                 transition={{ delay: 0.2 }}
               >
                 <GlassCard glow className="p-8 lg:p-10 rounded-3xl">
-                  <div
-                    className="text-sm font-medium mb-4"
-                    style={{ color: COLORS.gold }}
-                  >
+                  <div className="text-sm font-medium mb-4" style={{ color: COLORS.gold }}>
                     Giải pháp của chúng tôi
                   </div>
                   <h3
@@ -708,27 +519,14 @@ export default function FactoryTour() {
                     Audit trước, chọn giải pháp sau
                   </h3>
                   <p className="text-white/60 mb-6 leading-relaxed">
-                    Factory Audit Tour & Company Health Check được thiết kế để
-                    giải quyết chính những nỗi lo này.
+                    Factory Audit Tour & Company Health Check được thiết kế để giải quyết chính những nỗi lo này.
                   </p>
 
-                  <div
-                    className="p-5 rounded-2xl border border-white/10 mb-6"
-                    style={{ backgroundColor: `${COLORS.gold}10` }}
-                  >
-                    <p className="font-semibold text-white mb-3">
-                      Bạn sẽ có ngay:
-                    </p>
+                  <div className="p-5 rounded-2xl border border-white/10 mb-6" style={{ backgroundColor: `${COLORS.gold}10` }}>
+                    <p className="font-semibold text-white mb-3">Bạn sẽ có ngay:</p>
                     <div className="space-y-2">
-                      {[
-                        "Chẩn đoán hiện trạng toàn diện",
-                        "Danh sách 6–8 đội giải pháp phù hợp",
-                        "Lộ trình quick win → mở rộng quy mô",
-                      ].map((item) => (
-                        <div
-                          key={item}
-                          className="flex gap-2 text-white/80 text-sm"
-                        >
+                      {["Chẩn đoán hiện trạng toàn diện", "Danh sách 6–8 đội giải pháp phù hợp", "Lộ trình quick win → mở rộng quy mô"].map((item) => (
+                        <div key={item} className="flex gap-2 text-white/80 text-sm">
                           <span style={{ color: COLORS.gold }}>✓</span>
                           <span>{item}</span>
                         </div>
@@ -736,17 +534,10 @@ export default function FactoryTour() {
                     </div>
                   </div>
 
-                  <a
-                    href={GOOGLE_FORM_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href={GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer">
                     <Button
                       className="w-full h-12 rounded-xl font-semibold"
-                      style={{
-                        background: `linear-gradient(135deg, ${COLORS.gold} 0%, ${COLORS.goldLight} 100%)`,
-                        color: COLORS.navy,
-                      }}
+                      style={{ background: `linear-gradient(135deg, ${COLORS.gold} 0%, ${COLORS.goldLight} 100%)`, color: COLORS.navy }}
                     >
                       Đăng ký Health Check miễn phí
                       <ArrowRight className="ml-2 h-4 w-4" />
@@ -756,14 +547,10 @@ export default function FactoryTour() {
               </motion.div>
             </div>
           </Container>
-        </FullWidthSection>
+        </section>
 
         {/* ========== PROCESS - Zig-zag Timeline ========== */}
-        <FullWidthSection
-          id="process"
-          className="py-24 lg:py-32"
-          style={{ backgroundColor: COLORS.navy }}
-        >
+        <section id="process" className="py-24 lg:py-32 relative overflow-hidden" style={{ backgroundColor: COLORS.navy }}>
           <GlowOrb className="w-[800px] h-[800px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
 
           <Container className="relative z-10">
@@ -773,10 +560,7 @@ export default function FactoryTour() {
               viewport={{ once: true }}
               className="text-center mb-20"
             >
-              <span
-                className="text-xs tracking-[0.3em] uppercase mb-4 block"
-                style={{ color: COLORS.gold }}
-              >
+              <span className="text-xs tracking-[0.3em] uppercase mb-4 block" style={{ color: COLORS.gold }}>
                 Quy trình
               </span>
               <h2
@@ -796,14 +580,14 @@ export default function FactoryTour() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-16 ${idx % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
+                  className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-16 ${idx % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
                 >
                   {/* Number - Large typography as design element */}
                   <div className="flex-shrink-0">
                     <div
                       className="text-[120px] lg:text-[180px] font-black leading-none"
                       style={{
-                        color: "transparent",
+                        color: 'transparent',
                         WebkitTextStroke: `1px ${COLORS.gold}40`,
                       }}
                     >
@@ -812,16 +596,10 @@ export default function FactoryTour() {
                   </div>
 
                   {/* Content card with glass effect */}
-                  <GlassCard
-                    glow
-                    className="flex-1 p-8 lg:p-10 rounded-3xl max-w-xl"
-                  >
+                  <GlassCard glow className="flex-1 p-8 lg:p-10 rounded-3xl max-w-xl">
                     <span
                       className="inline-block px-3 py-1 rounded-full text-xs font-medium mb-4"
-                      style={{
-                        backgroundColor: `${COLORS.gold}20`,
-                        color: COLORS.gold,
-                      }}
+                      style={{ backgroundColor: `${COLORS.gold}20`, color: COLORS.gold }}
                     >
                       {step.tag}
                     </span>
@@ -843,11 +621,7 @@ export default function FactoryTour() {
               viewport={{ once: true }}
               className="text-center mt-20"
             >
-              <a
-                href={GOOGLE_FORM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer">
                 <Button
                   className="h-14 px-10 rounded-full font-semibold text-base"
                   style={{
@@ -862,14 +636,10 @@ export default function FactoryTour() {
               </a>
             </motion.div>
           </Container>
-        </FullWidthSection>
+        </section>
 
         {/* ========== BENEFITS - Large Typography Focus ========== */}
-        <FullWidthSection
-          id="benefits"
-          className="py-24 lg:py-32"
-          style={{ backgroundColor: COLORS.cream }}
-        >
+        <section id="benefits" className="py-24 lg:py-32 relative" style={{ backgroundColor: COLORS.cream }}>
           <Container>
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <motion.div
@@ -877,18 +647,12 @@ export default function FactoryTour() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <span
-                  className="text-xs tracking-[0.3em] uppercase mb-4 block"
-                  style={{ color: COLORS.gold }}
-                >
+                <span className="text-xs tracking-[0.3em] uppercase mb-4 block" style={{ color: COLORS.gold }}>
                   Quyền lợi
                 </span>
                 <h2
                   className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-8"
-                  style={{
-                    color: COLORS.navy,
-                    fontFamily: "'Outfit', sans-serif",
-                  }}
+                  style={{ color: COLORS.navy, fontFamily: "'Outfit', sans-serif" }}
                 >
                   Tại sao <br />
                   <span style={{ color: COLORS.gold }}>chọn chúng tôi?</span>
@@ -904,27 +668,17 @@ export default function FactoryTour() {
                       viewport={{ once: true }}
                       transition={{ delay: idx * 0.1 }}
                       className="p-6 rounded-2xl border transition-all hover:shadow-xl"
-                      style={{
-                        borderColor: COLORS.stone,
-                        backgroundColor: "white",
-                      }}
+                      style={{ borderColor: COLORS.stone, backgroundColor: 'white' }}
                     >
                       <h3
                         className="text-xl lg:text-2xl font-bold mb-3"
-                        style={{
-                          color: COLORS.navy,
-                          fontFamily: "'Outfit', sans-serif",
-                        }}
+                        style={{ color: COLORS.navy, fontFamily: "'Outfit', sans-serif" }}
                       >
                         {item.title}
                       </h3>
                       <div className="space-y-2">
                         {item.points.map((point) => (
-                          <div
-                            key={point}
-                            className="flex gap-2 text-sm"
-                            style={{ color: COLORS.slate }}
-                          >
+                          <div key={point} className="flex gap-2 text-sm" style={{ color: COLORS.slate }}>
                             <span style={{ color: COLORS.gold }}>→</span>
                             <span>{point}</span>
                           </div>
@@ -952,26 +706,17 @@ export default function FactoryTour() {
                     />
                     <div
                       className="absolute inset-0"
-                      style={{
-                        background: `linear-gradient(135deg, ${COLORS.navy}80 0%, transparent 50%)`,
-                      }}
+                      style={{ background: `linear-gradient(135deg, ${COLORS.navy}80 0%, transparent 50%)` }}
                     />
                   </div>
 
                   {/* Floating glass card */}
                   <div
                     className="absolute -bottom-8 -left-8 p-6 rounded-2xl backdrop-blur-xl border border-white/20 shadow-2xl"
-                    style={{ background: "rgba(255,255,255,0.9)" }}
+                    style={{ background: 'rgba(255,255,255,0.9)' }}
                   >
-                    <div
-                      className="text-4xl font-bold"
-                      style={{ color: COLORS.gold }}
-                    >
-                      100%
-                    </div>
-                    <div className="text-sm" style={{ color: COLORS.slate }}>
-                      Miễn phí giai đoạn đầu
-                    </div>
+                    <div className="text-4xl font-bold" style={{ color: COLORS.gold }}>100%</div>
+                    <div className="text-sm" style={{ color: COLORS.slate }}>Miễn phí giai đoạn đầu</div>
                   </div>
 
                   {/* Abstract shape */}
@@ -983,14 +728,10 @@ export default function FactoryTour() {
               </motion.div>
             </div>
           </Container>
-        </FullWidthSection>
+        </section>
 
         {/* ========== PARTNERS - Minimal Grid ========== */}
-        <FullWidthSection
-          id="partners"
-          className="py-24 lg:py-32"
-          style={{ backgroundColor: "white" }}
-        >
+        <section id="partners" className="py-24 lg:py-32 relative overflow-hidden" style={{ backgroundColor: 'white' }}>
           <Container>
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -998,18 +739,12 @@ export default function FactoryTour() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <span
-                className="text-xs tracking-[0.3em] uppercase mb-4 block"
-                style={{ color: COLORS.gold }}
-              >
+              <span className="text-xs tracking-[0.3em] uppercase mb-4 block" style={{ color: COLORS.gold }}>
                 Hệ sinh thái
               </span>
               <h2
                 className="text-4xl lg:text-5xl font-bold"
-                style={{
-                  color: COLORS.navy,
-                  fontFamily: "'Outfit', sans-serif",
-                }}
+                style={{ color: COLORS.navy, fontFamily: "'Outfit', sans-serif" }}
               >
                 Đối tác công nghệ
               </h2>
@@ -1025,10 +760,7 @@ export default function FactoryTour() {
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
                   className="p-6 rounded-3xl border transition-all hover:shadow-lg"
-                  style={{
-                    borderColor: COLORS.stone,
-                    backgroundColor: "white",
-                  }}
+                  style={{ borderColor: COLORS.stone, backgroundColor: 'white' }}
                 >
                   <div
                     className="text-3xl font-bold mb-2"
@@ -1036,10 +768,7 @@ export default function FactoryTour() {
                   >
                     {category.items.length}+
                   </div>
-                  <div
-                    className="text-base font-semibold mb-4"
-                    style={{ color: COLORS.navy }}
-                  >
+                  <div className="text-base font-semibold mb-4" style={{ color: COLORS.navy }}>
                     {category.category}
                   </div>
                   <div className="flex flex-wrap gap-2">
@@ -1047,10 +776,7 @@ export default function FactoryTour() {
                       <span
                         key={item}
                         className="px-3 py-1.5 rounded-full text-xs"
-                        style={{
-                          backgroundColor: COLORS.stone,
-                          color: COLORS.navy,
-                        }}
+                        style={{ backgroundColor: COLORS.stone, color: COLORS.navy }}
                       >
                         {item}
                       </span>
@@ -1060,14 +786,10 @@ export default function FactoryTour() {
               ))}
             </div>
           </Container>
-        </FullWidthSection>
+        </section>
 
         {/* ========== FAQ - Clean Accordion ========== */}
-        <FullWidthSection
-          id="faq"
-          className="py-24 lg:py-32"
-          style={{ backgroundColor: COLORS.cream }}
-        >
+        <section id="faq" className="py-24 lg:py-32" style={{ backgroundColor: COLORS.cream }}>
           <Container>
             <div className="grid lg:grid-cols-2 gap-16">
               <motion.div
@@ -1075,18 +797,12 @@ export default function FactoryTour() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <span
-                  className="text-xs tracking-[0.3em] uppercase mb-4 block"
-                  style={{ color: COLORS.gold }}
-                >
+                <span className="text-xs tracking-[0.3em] uppercase mb-4 block" style={{ color: COLORS.gold }}>
                   Hỗ trợ
                 </span>
                 <h2
                   className="text-4xl lg:text-5xl font-bold mb-6"
-                  style={{
-                    color: COLORS.navy,
-                    fontFamily: "'Outfit', sans-serif",
-                  }}
+                  style={{ color: COLORS.navy, fontFamily: "'Outfit', sans-serif" }}
                 >
                   Câu hỏi <br />
                   <span style={{ color: COLORS.gold }}>thường gặp</span>
@@ -1125,10 +841,7 @@ export default function FactoryTour() {
                       >
                         {item.q}
                       </AccordionTrigger>
-                      <AccordionContent
-                        className="pb-5"
-                        style={{ color: COLORS.slate }}
-                      >
+                      <AccordionContent className="pb-5" style={{ color: COLORS.slate }}>
                         {item.a}
                       </AccordionContent>
                     </AccordionItem>
@@ -1137,19 +850,12 @@ export default function FactoryTour() {
               </motion.div>
             </div>
           </Container>
-        </FullWidthSection>
+        </section>
 
         {/* ========== CONTACT - Split Layout with Glass Form ========== */}
-        <FullWidthSection
-          id="contact"
-          className="py-24 lg:py-32"
-          style={{ backgroundColor: COLORS.navy }}
-        >
+        <section id="contact" className="py-24 lg:py-32 relative overflow-hidden" style={{ backgroundColor: COLORS.navy }}>
           <GlowOrb className="w-[600px] h-[600px] top-0 left-0" />
-          <GlowOrb
-            className="w-[400px] h-[400px] bottom-0 right-0"
-            color="#4F46E5"
-          />
+          <GlowOrb className="w-[400px] h-[400px] bottom-0 right-0" color="#4F46E5" />
 
           <Container className="relative z-10">
             <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -1158,10 +864,7 @@ export default function FactoryTour() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <span
-                  className="text-xs tracking-[0.3em] uppercase mb-4 block"
-                  style={{ color: COLORS.gold }}
-                >
+                <span className="text-xs tracking-[0.3em] uppercase mb-4 block" style={{ color: COLORS.gold }}>
                   Đăng ký
                 </span>
                 <h2
@@ -1172,31 +875,21 @@ export default function FactoryTour() {
                   <span style={{ color: COLORS.gold }}>ngay hôm nay</span>
                 </h2>
                 <p className="text-lg text-white/60 mb-10">
-                  Điền form, chúng tôi sẽ liên hệ trong{" "}
-                  <span className="text-white">2-3 ngày làm việc</span>.
+                  Điền form, chúng tôi sẽ liên hệ trong <span className="text-white">2-3 ngày làm việc</span>.
                 </p>
 
                 <GlassCard className="p-6 rounded-2xl mb-8">
                   <div className="space-y-4">
                     <div className="flex items-center gap-3 text-white/70">
-                      <Phone
-                        className="h-5 w-5"
-                        style={{ color: COLORS.gold }}
-                      />
+                      <Phone className="h-5 w-5" style={{ color: COLORS.gold }} />
                       <span>+84909293886</span>
                     </div>
                     <div className="flex items-center gap-3 text-white/70">
-                      <Mail
-                        className="h-5 w-5"
-                        style={{ color: COLORS.gold }}
-                      />
+                      <Mail className="h-5 w-5" style={{ color: COLORS.gold }} />
                       <span>dung.bui@bcp.global</span>
                     </div>
                     <div className="flex items-center gap-3 text-white/70">
-                      <MapPin
-                        className="h-5 w-5"
-                        style={{ color: COLORS.gold }}
-                      />
+                      <MapPin className="h-5 w-5" style={{ color: COLORS.gold }} />
                       <span>224A Điện Biên Phủ, Xuân Hòa, TP. Hồ Chí Minh</span>
                     </div>
                   </div>
@@ -1219,61 +912,31 @@ export default function FactoryTour() {
                     <form onSubmit={handleSubmit} className="space-y-5">
                       <div className="grid sm:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <Label style={{ color: COLORS.navy }}>
-                            Tên công ty *
-                          </Label>
-                          <Input
-                            required
-                            placeholder="VD: Công ty TNHH ABC"
-                            className="h-12 rounded-xl"
-                          />
+                          <Label style={{ color: COLORS.navy }}>Tên công ty *</Label>
+                          <Input required placeholder="VD: Công ty TNHH ABC" className="h-12 rounded-xl" />
                         </div>
                         <div className="space-y-2">
                           <Label style={{ color: COLORS.navy }}>Ngành</Label>
-                          <Input
-                            placeholder="VD: Sản xuất nhựa..."
-                            className="h-12 rounded-xl"
-                          />
+                          <Input placeholder="VD: Sản xuất nhựa..." className="h-12 rounded-xl" />
                         </div>
                       </div>
                       <div className="grid sm:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label style={{ color: COLORS.navy }}>Họ tên *</Label>
-                          <Input
-                            required
-                            placeholder="Họ và tên"
-                            className="h-12 rounded-xl"
-                          />
+                          <Input required placeholder="Họ và tên" className="h-12 rounded-xl" />
                         </div>
                         <div className="space-y-2">
                           <Label style={{ color: COLORS.navy }}>Email *</Label>
-                          <Input
-                            type="email"
-                            required
-                            placeholder="email@company.com"
-                            className="h-12 rounded-xl"
-                          />
+                          <Input type="email" required placeholder="email@company.com" className="h-12 rounded-xl" />
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <Label style={{ color: COLORS.navy }}>
-                          Số điện thoại *
-                        </Label>
-                        <Input
-                          required
-                          placeholder="0909 xxx xxx"
-                          className="h-12 rounded-xl"
-                        />
+                        <Label style={{ color: COLORS.navy }}>Số điện thoại *</Label>
+                        <Input required placeholder="0909 xxx xxx" className="h-12 rounded-xl" />
                       </div>
                       <div className="space-y-2">
-                        <Label style={{ color: COLORS.navy }}>
-                          Nỗi đau hiện tại
-                        </Label>
-                        <Textarea
-                          rows={3}
-                          placeholder="VD: Dữ liệu rời rạc, khó kiểm soát tồn kho..."
-                          className="rounded-xl"
-                        />
+                        <Label style={{ color: COLORS.navy }}>Nỗi đau hiện tại</Label>
+                        <Textarea rows={3} placeholder="VD: Dữ liệu rời rạc, khó kiểm soát tồn kho..." className="rounded-xl" />
                       </div>
                       <Button
                         type="submit"
@@ -1281,9 +944,7 @@ export default function FactoryTour() {
                         className="w-full h-14 rounded-xl font-semibold text-base"
                         style={{ backgroundColor: COLORS.navy }}
                       >
-                        {isSubmitting
-                          ? "Đang gửi..."
-                          : "Đăng ký Health Check miễn phí"}
+                        {isSubmitting ? "Đang gửi..." : "Đăng ký Health Check miễn phí"}
                         <ArrowRight className="ml-2 h-5 w-5" />
                       </Button>
                     </form>
@@ -1317,7 +978,7 @@ export default function FactoryTour() {
               </motion.div>
             </div>
           </Container>
-        </FullWidthSection>
+        </section>
       </main>
     </div>
   );
