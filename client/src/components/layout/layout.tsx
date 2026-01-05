@@ -7,7 +7,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen w-full max-w-7xl mx-auto">
+    <div className="min-h-screen w-full">
       <CenteredContainer>{children}</CenteredContainer>
     </div>
   );
