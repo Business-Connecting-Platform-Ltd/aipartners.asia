@@ -8,7 +8,7 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen w-full">
-      <CenteredContainer>{children}</CenteredContainer>
+      {children}
     </div>
   );
 }
