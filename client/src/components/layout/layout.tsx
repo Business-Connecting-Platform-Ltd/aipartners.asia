@@ -1,4 +1,3 @@
-
 import React from "react";
 import { CenteredContainer } from "./centered-container";
 
@@ -8,10 +7,8 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen w-full">
-      <CenteredContainer>
-        {children}
-      </CenteredContainer>
+    <div className="min-h-screen w-full max-w-7xl mx-auto">
+      <CenteredContainer>{children}</CenteredContainer>
     </div>
   );
 }
