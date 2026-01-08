@@ -30,7 +30,7 @@ const COLORS = {
 };
 
 const GOOGLE_FORM_URL =
-    "https://docs.google.com/forms/d/e/1FAIpQLScpxsHe97q0aG9jgCqffy1CsY19CeliN-p7h4b6UyjT9DZpog/viewform?usp=header";
+    "https://forms.gle/yPLseH7yhA84tG1z6";
 
 // ============================================================================
 // DATA - Full Original Content

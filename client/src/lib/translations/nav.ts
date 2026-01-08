@@ -7,17 +7,19 @@ export const navTranslations = {
       aiTrainers: "AI Trainers",
       aiWorkforce: "AI Workforce",
       aiStore: "AI Agents Market",
-      contact: "Contact Us"
+      contact: "Contact Us",
+      factoryTour: "Factory Tour"
     }
   },
   ja: {
     nav: {
       home: "ホーム",
       aiBuilders: "AIビルダー",
-      aiTrainers: "AIトレーナー", 
+      aiTrainers: "AIトレーナー",
       aiWorkforce: "AI人材",
       aiStore: "AIエージェントマーケット",
-      contact: "お問い合わせ"
+      contact: "お問い合わせ",
+      factoryTour: "Factory Tour"
     }
   }
 };

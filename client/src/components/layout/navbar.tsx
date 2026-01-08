@@ -15,7 +15,7 @@ const NavItems = () => {
     { label: t("nav.aiTrainers"), href: "/ai-trainers" },
     { label: t("nav.aiWorkforce"), href: "/ai-workforce" },
     { label: t("nav.aiStore"), href: "/ai-store" },
-    { label: t("Factory tour"), href: "/factory-tour" },
+    { label: t("nav.factoryTour"), href: "/factory-tour/partner" },
   ];
 };
 

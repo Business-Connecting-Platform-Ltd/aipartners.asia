@@ -39,6 +39,8 @@ function Router() {
             <Route path="/ai-workforce" component={AIWorkforce} />
             <Route path="/ai-store" component={AIStore} />
             <Route path="/factory-tour" component={FactoryTour} />
+            <Route path="/factory-tour/partner" component={FactoryTour} />
+            <Route path="/factory-tour/factory" component={FactoryTour} />
             <Route path="/contact" component={Contact} />
             <Route component={NotFound} />
           </Switch>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "wouter";
 import { ContentContainer, CTAButton } from "@/components/factory-tour/shared";
 import AudienceA from "@/components/factory-tour/AudienceA";
 import AudienceB from "@/components/factory-tour/AudienceB";
@@ -28,9 +29,27 @@ const NAV_LINKS_B = [
 type Audience = "A" | "B";
 
 export default function FactoryTour() {
-  const [audience, setAudience] = useState<Audience>("A");
+  const [location, setLocation] = useLocation();
+
+  // Determine audience based on path
+  const audience: Audience = location === "/factory-tour/factory" ? "B" : "A";
 
   const navLinks = audience === "A" ? NAV_LINKS_A : NAV_LINKS_B;
+
+  // Automatically redirect /factory-tour to /factory-tour/partner for consistent URLs
+  useEffect(() => {
+    if (location === "/factory-tour") {
+      setLocation("/factory-tour/partner", { replace: true });
+    }
+  }, [location, setLocation]);
+
+  const handleAudienceChange = (val: Audience) => {
+    if (val === "A") {
+      setLocation("/factory-tour/partner");
+    } else {
+      setLocation("/factory-tour/factory");
+    }
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-white text-slate-900">
@@ -42,9 +61,7 @@ export default function FactoryTour() {
                 BCP
               </div>
               <div className="hidden sm:block">
-                <p className="text-sm font-semibold text-slate-800">
-                  BCP Factory Tour
-                </p>
+                <p className="text-sm font-semibold text-slate-800">BCP Factory Tour</p>
                 <p className="text-xs text-slate-500">AI Partners 2025</p>
               </div>
             </div>
@@ -53,7 +70,7 @@ export default function FactoryTour() {
             <div className="w-[180px] md:w-[220px]">
               <Select
                 value={audience}
-                onValueChange={(val) => setAudience(val as Audience)}
+                onValueChange={(val) => handleAudienceChange(val as Audience)}
               >
                 <SelectTrigger className="h-9 bg-slate-50 border-slate-200 focus:ring-blue-500">
                   <SelectValue placeholder="Chọn đối tượng" />
@@ -89,7 +106,9 @@ export default function FactoryTour() {
           </nav>
 
           <div className="flex items-center gap-2 shrink-0">
-            <CTAButton />
+            <CTAButton
+              href={audience === "B" ? "https://forms.gle/yPLseH7yhA84tG1z6" : undefined}
+            />
           </div>
         </ContentContainer>
       </header>
