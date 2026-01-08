@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Shield, CheckCircle2, Users, ClipboardList, Factory, FileCheck, UserCheck } from 'lucide-react';
 import { FullWidthSection, ContentContainer, CTAButton } from "./shared";
-import hiepthanh from "../../assets/hiepthanh.jpg";
+import hiepthanh from "../../pages/course/hiepthanh.jpg";
 
 export default function AudienceA() {
     return (
