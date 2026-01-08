@@ -1,14 +1,7 @@
 import { motion } from "framer-motion";
-import {
-    Shield,
-    CheckCircle2,
-    Users,
-    ClipboardList,
-    Factory,
-    FileCheck,
-    UserCheck,
-} from "lucide-react";
+import { Shield, CheckCircle2, Users, ClipboardList, Factory, FileCheck, UserCheck } from 'lucide-react';
 import { FullWidthSection, ContentContainer, CTAButton } from "./shared";
+import hiepthanh from "../../assets/hiepthanh.jpg";
 
 export default function AudienceA() {
     return (
@@ -40,9 +33,8 @@ export default function AudienceA() {
                             Từ slide đến nhà máy thực tế
                         </h1>
                         <p className="text-lg md:text-xl text-white/85 max-w-3xl mx-auto">
-                            Kết nối trực tiếp với CEO nhà máy, nhận tech leads
-                            thật mỗi tuần, đồng hành triển khai dự án
-                            AI/IoT/Automation cùng BCP.
+                            Kết nối trực tiếp với CEO nhà máy, nhận tech leads thật mỗi tuần,
+                            đồng hành triển khai dự án AI/IoT/Automation cùng BCP.
                         </p>
                         <div className="flex flex-wrap items-center justify-center gap-4 text-white/80 text-sm">
                             {[
@@ -62,8 +54,7 @@ export default function AudienceA() {
                         <div className="pt-4">
                             <CTAButton />
                             <p className="text-white/60 text-sm mt-3">
-                                Mất 3 phút đăng ký • BCP phản hồi trong 3–5 ngày
-                                làm việc
+                                Mất 3 phút đăng ký • BCP phản hồi trong 3–5 ngày làm việc
                             </p>
                         </div>
                     </motion.div>
@@ -87,8 +78,7 @@ export default function AudienceA() {
                                 AI giỏi nhưng vẫn khó chốt dự án
                             </h2>
                             <p className="text-slate-600 max-w-2xl mx-auto">
-                                Những rào cản phổ biến mà các đội AI/IoT đang
-                                gặp phải:
+                                Những rào cản phổ biến mà các đội AI/IoT đang gặp phải:
                             </p>
                         </div>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -160,9 +150,8 @@ export default function AudienceA() {
                                 Cầu nối vào nhà máy, có người thật việc thật
                             </h2>
                             <p className="text-slate-600 max-w-2xl mx-auto">
-                                Business Connecting Platform kết nối nhu cầu MUA
-                                - BÁN - HỢP TÁC giữa 25+ ngành bằng AI matching
-                                và đội ngũ onsite.
+                                Business Connecting Platform kết nối nhu cầu MUA - BÁN - HỢP TÁC giữa
+                                25+ ngành bằng AI matching và đội ngũ onsite.
                             </p>
                         </div>
                         <div className="grid md:grid-cols-3 gap-6">
@@ -198,18 +187,9 @@ export default function AudienceA() {
                         </div>
                         <div className="grid md:grid-cols-3 gap-4">
                             {[
-                                {
-                                    icon: Users,
-                                    text: "Khai thác & sàng lọc tech leads từ cộng đồng BCP",
-                                },
-                                {
-                                    icon: ClipboardList,
-                                    text: "Khảo sát nhanh, đề xuất rõ ràng, tập trung ROI",
-                                },
-                                {
-                                    icon: Factory,
-                                    text: "Factory Tour: gặp trực tiếp CEO, ban vận hành, xem dây chuyền",
-                                },
+                                { icon: Users, text: "Khai thác & sàng lọc tech leads từ cộng đồng BCP" },
+                                { icon: ClipboardList, text: "Khảo sát nhanh, đề xuất rõ ràng, tập trung ROI" },
+                                { icon: Factory, text: "Factory Tour: gặp trực tiếp CEO, ban vận hành, xem dây chuyền" },
                             ].map((item) => (
                                 <div
                                     key={item.text}
@@ -218,9 +198,7 @@ export default function AudienceA() {
                                     <div className="p-2 rounded-lg bg-slate-100 text-blue-700">
                                         <item.icon className="h-5 w-5" />
                                     </div>
-                                    <p className="text-slate-700 text-sm">
-                                        {item.text}
-                                    </p>
+                                    <p className="text-slate-700 text-sm">{item.text}</p>
                                 </div>
                             ))}
                         </div>
@@ -315,8 +293,8 @@ export default function AudienceA() {
                         <div className="grid lg:grid-cols-2 gap-6 items-start">
                             <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
                                 <img
-                                    src="https://placehold.co/800x600?text=Factory+Tour"
-                                    alt="Nhà máy trong Factory Tour"
+                                    src={hiepthanh}
+                                    alt="Nhà máy Nhựa Hiệp Thành"
                                     className="h-full w-full object-cover"
                                 />
                             </div>
@@ -334,10 +312,7 @@ export default function AudienceA() {
                                             "Thiết kế khảo sát theo mảng IoT, AI, MES, ERP, Data, Automation.",
                                             "Chọn AI Partners theo chuyên môn phù hợp từng dây chuyền.",
                                         ].map((item) => (
-                                            <li
-                                                key={item}
-                                                className="flex gap-2"
-                                            >
+                                            <li key={item} className="flex gap-2">
                                                 <CheckCircle2 className="h-4 w-4 text-blue-600 mt-1" />
                                                 <span>{item}</span>
                                             </li>
@@ -358,10 +333,7 @@ export default function AudienceA() {
                                             "Nhiều AI Partners vào vòng trao đổi để xây dựng proposal.",
                                             "BCP & nhà máy lập bản đồ nhu cầu chuyển đổi số toàn diện.",
                                         ].map((item) => (
-                                            <li
-                                                key={item}
-                                                className="flex gap-2"
-                                            >
+                                            <li key={item} className="flex gap-2">
                                                 <CheckCircle2 className="h-4 w-4 text-blue-600 mt-1" />
                                                 <span>{item}</span>
                                             </li>
@@ -369,9 +341,8 @@ export default function AudienceA() {
                                     </ul>
                                 </div>
                                 <div className="border-l-4 border-blue-600 pl-4 text-slate-800 italic">
-                                    “Factory Tour sẽ được nhân rộng trong chuỗi
-                                    chương trình 2025, với AI Partners là lực
-                                    lượng nòng cốt.”
+                                    “Factory Tour sẽ được nhân rộng trong chuỗi chương trình
+                                    2025, với AI Partners là lực lượng nòng cốt.”
                                 </div>
                             </div>
                         </div>
@@ -379,10 +350,7 @@ export default function AudienceA() {
                 </ContentContainer>
             </section>
 
-            <section
-                id="process"
-                className="py-16 md:py-24 border-t border-slate-100"
-            >
+            <section id="process" className="py-16 md:py-24 border-t border-slate-100">
                 <ContentContainer id="process">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -436,9 +404,7 @@ export default function AudienceA() {
                                     <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-slate-100 text-blue-700 mx-auto">
                                         <item.icon className="h-6 w-6" />
                                     </div>
-                                    <h3 className="font-semibold text-slate-900">
-                                        {item.title}
-                                    </h3>
+                                    <h3 className="font-semibold text-slate-900">{item.title}</h3>
                                     <p className="text-slate-600 text-sm leading-relaxed">
                                         {item.desc}
                                     </p>
@@ -462,13 +428,12 @@ export default function AudienceA() {
                             Sẵn sàng có dự án AI/IoT thực sự?
                         </h2>
                         <p className="text-white/85 text-lg">
-                            BCP kết nối bạn với cơ hội thật, khách hàng nghiêm
-                            túc và đội ngũ đồng hành đến khi triển khai.
+                            BCP kết nối bạn với cơ hội thật, khách hàng nghiêm túc và đội ngũ
+                            đồng hành đến khi triển khai.
                         </p>
                         <CTAButton variant="secondary" />
                         <p className="text-white/60 text-sm">
-                            Mất 3 phút đăng ký • Phản hồi trong 3–5 ngày làm
-                            việc
+                            Mất 3 phút đăng ký • Phản hồi trong 3–5 ngày làm việc
                         </p>
                     </motion.div>
                 </ContentContainer>
