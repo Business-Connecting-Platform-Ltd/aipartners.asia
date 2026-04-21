@@ -23,7 +23,7 @@ import Nicky from "./member/nicky.png";
 import wichak from "./member/wichak.jfif";
 import Trung from "./member/Trung.jpg";
 import Dung from "./member/Dung.png";
-import Binh from ".member/Binh.jpg";
+import Binh from "./member/Binh.jpg";
 import bg from "./background.mp4";
 
 import {
