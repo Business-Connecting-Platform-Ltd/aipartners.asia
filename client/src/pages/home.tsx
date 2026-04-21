@@ -308,7 +308,7 @@ export default function Home() {
                         imgSrc: Harold,
                       },
                       {
-                        name: "Binh",
+                        name: "Binh Le",
                         role: "AI in Supply Chain",
                         imgSrc: Binh,
                       },
