@@ -23,6 +23,7 @@ import Nicky from "./member/nicky.png";
 import wichak from "./member/wichak.jfif";
 import Trung from "./member/Trung.jpg";
 import Dung from "./member/Dung.png";
+import Binh from ".member/Binh.jpg";
 import bg from "./background.mp4";
 
 import {
@@ -306,7 +307,11 @@ export default function Home() {
                         role: "AI in Strategy",
                         imgSrc: Harold,
                       },
-
+                      {
+                        name: "Binh",
+                        role: "AI in Supply Chain",
+                        imgSrc: Binh,
+                      },
                       {
                         name: "Nguyen Lu",
                         role: "AI in Banking & Finance",
@@ -326,12 +331,6 @@ export default function Home() {
                         name: "Wichak Chongudomlert",
                         role: "AI in Sales & CRM",
                         imgSrc: wichak,
-                      },
-                      {
-                        name: "Tuan Nguyen",
-                        role: "AI in Healthcare",
-                        imgSrc:
-                          "https://tse4.mm.bing.net/th?id=OIP.zeeoSeLcH19kuQ1ABNOGCwHaHU&pid=Api&P=0&h=180",
                       },
                       {
                         name: "Huu Pham",
