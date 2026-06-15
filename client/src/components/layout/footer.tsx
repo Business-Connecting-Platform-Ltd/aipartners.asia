@@ -152,7 +152,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>© 2025 AIPartners. All rights reserved.</p>
+          <p>© 2026 AIPartners Asia. All rights reserved.</p>
         </div>
       </div>
     </footer>
