@@ -37,7 +37,7 @@ export default function Footer() {
                 href="/ai-trainers"
                 className="block text-sm text-muted-foreground hover:text-primary transition-colors"
               >
-                AI Trainers
+                AI Training Classes
               </Link>
               <Link
                 href="/ai-workforce"
