@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khóa Học AI Thực Chiến | BCP.global</title>
+  <meta name="description" content="Nắm vững AI từ nền tảng đến ứng dụng thực tế. Khóa học AI thực chiến cho cá nhân & doanh nghiệp — áp dụng ngay từ buổi đầu tiên.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "Course",
+        "name": "AI Fundamentals",
+        "description": "Hiểu bản chất AI, prompt engineering, và các công cụ AI phổ biến",
+        "provider": { "@type": "Organization", "name": "BCP.global" },
+        "educationalLevel": "Beginner"
+      },
+      {
+        "@type": "Course",
+        "name": "AI Chuyên Ngành",
+        "description": "Ứng dụng AI vào lĩnh vực chuyên môn",
+        "provider": { "@type": "Organization", "name": "BCP.global" },
+        "educationalLevel": "Intermediate"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --accent: #E85D2A;
+      --accent-hover: #d14e1e;
+      --black: #1a1a1a;
+      --gray-800: #2d2d2d;
+      --gray-600: #6b6b6b;
+      --gray-400: #a3a3a3;
+      --gray-200: #e5e5e5;
+      --gray-100: #f5f5f5;
+      --white: #ffffff;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--black); -webkit-font-smoothing: antialiased; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .nav-inner {
+      max-width: 1080px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 24px;
+    }
+    .logo {
+      font-size: 1.1rem; font-weight: 800; color: var(--black);
+      text-decoration: none; letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a {
+      color: var(--gray-600); text-decoration: none;
+      font-size: 0.875rem; font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--black); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 10px 24px; border-radius: 8px;
+      font-size: 0.875rem; font-weight: 600;
+      text-decoration: none; transition: all 0.15s ease;
+      cursor: pointer; border: none; font-family: var(--font);
+    }
+    .btn-primary {
+      background: var(--accent); color: var(--white);
+    }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-outline {
+      background: transparent; color: var(--black);
+      border: 1.5px solid var(--gray-200);
+    }
+    .btn-outline:hover { border-color: var(--gray-400); }
+    .btn-large {
+      padding: 14px 36px; font-size: 1rem; border-radius: 10px;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 160px 24px 100px;
+      text-align: center;
+    }
+    .hero-label {
+      display: inline-block;
+      padding: 6px 14px;
+      background: #FFF3ED;
+      color: var(--accent);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--black);
+      max-width: 700px;
+      margin: 0 auto 20px;
+    }
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--gray-600);
+      max-width: 520px;
+      margin: 0 auto 16px;
+      line-height: 1.6;
+    }
+    .hero .en {
+      font-size: 0.95rem;
+      color: var(--gray-400);
+      margin-bottom: 36px;
+    }
+    .hero-actions {
+      display: flex; gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ─── STATS ─── */
+    .stats {
+      max-width: 720px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      margin-top: 72px;
+      overflow: hidden;
+    }
+    .stat {
+      text-align: center; padding: 28px 16px;
+    }
+    .stat:not(:last-child) {
+      border-right: 1px solid var(--gray-200);
+    }
+    .stat-num {
+      font-size: 1.75rem; font-weight: 800; color: var(--black);
+    }
+    .stat-label {
+      font-size: 0.8rem; color: var(--gray-400); margin-top: 4px;
+    }
+
+    /* ─── SECTION ─── */
+    .section {
+      padding: 100px 24px;
+    }
+    .section-alt {
+      background: var(--gray-100);
+    }
+    .container {
+      max-width: 1080px; margin: 0 auto;
+    }
+    .section-header {
+      text-align: center; margin-bottom: 64px;
+    }
+    .section-header .label {
+      font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .section-header h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 800; letter-spacing: -1px;
+      color: var(--black); margin-bottom: 12px;
+    }
+    .section-header p {
+      font-size: 1rem; color: var(--gray-400);
+      max-width: 480px; margin: 0 auto;
+    }
+
+    /* ─── PAIN POINTS ─── */
+    .pain-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .pain-card {
+      padding: 32px;
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      background: var(--white);
+    }
+    .pain-card .emoji { font-size: 1.5rem; margin-bottom: 16px; }
+    .pain-card h3 {
+      font-size: 1rem; font-weight: 700; margin-bottom: 8px;
+    }
+    .pain-card p {
+      font-size: 0.9rem; color: var(--gray-600); line-height: 1.6;
+    }
+
+    /* ─── COURSES ─── */
+    .courses-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .course-card {
+      border: 1px solid var(--gray-200);
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--white);
+      transition: box-shadow 0.2s;
+    }
+    .course-card:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+    .course-top {
+      padding: 36px 32px 28px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .course-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+    .tag-fundamentals { background: #FFF3ED; color: var(--accent); }
+    .tag-specialized { background: #EEF2FF; color: #4F46E5; }
+    .course-top h3 {
+      font-size: 1.5rem; font-weight: 800;
+      letter-spacing: -0.5px; margin-bottom: 10px;
+    }
+    .course-top p {
+      font-size: 0.9rem; color: var(--gray-600); line-height: 1.6;
+    }
+    .course-bottom { padding: 24px 32px 32px; }
+    .course-meta {
+      display: flex; flex-direction: column; gap: 12px;
+      margin-bottom: 24px;
+    }
+    .meta-row {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.875rem; color: var(--gray-600);
+    }
+    .meta-row svg {
+      width: 16px; height: 16px; color: var(--gray-400);
+      flex-shrink: 0;
+    }
+    .topics {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      margin-bottom: 28px;
+    }
+    .topic {
+      padding: 5px 12px;
+      background: var(--gray-100);
+      border-radius: 100px;
+      font-size: 0.78rem; color: var(--gray-600);
+      font-weight: 500;
+    }
+    .price-row {
+      display: flex; align-items: baseline; gap: 8px;
+      margin-bottom: 16px;
+    }
+    .price {
+      font-size: 1.4rem; font-weight: 800; color: var(--black);
+    }
+    .price-note { font-size: 0.8rem; color: var(--gray-400); }
+    .course-card .btn { width: 100%; justify-content: center; }
+
+    /* ─── OUTCOMES ─── */
+    .outcomes-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .outcome {
+      text-align: center; padding: 36px 20px;
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      background: var(--white);
+    }
+    .outcome .emoji { font-size: 2rem; margin-bottom: 16px; }
+    .outcome h3 {
+      font-size: 0.95rem; font-weight: 700; margin-bottom: 6px;
+    }
+    .outcome p {
+      font-size: 0.82rem; color: var(--gray-600); line-height: 1.5;
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .test-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .test-card {
+      padding: 32px;
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      background: var(--white);
+    }
+    .stars {
+      color: var(--accent); font-size: 0.9rem;
+      margin-bottom: 16px; letter-spacing: 2px;
+    }
+    .test-card blockquote {
+      font-size: 0.92rem; color: var(--gray-800);
+      line-height: 1.7; margin-bottom: 20px;
+      font-style: normal;
+    }
+    .test-author {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--gray-100);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 700; color: var(--gray-600);
+    }
+    .author-name {
+      font-size: 0.85rem; font-weight: 600;
+    }
+    .author-detail {
+      font-size: 0.75rem; color: var(--gray-400);
+    }
+
+    /* ─── ENTERPRISE ─── */
+    .enterprise-box {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+    }
+    .enterprise-features {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .enterprise-features li {
+      display: flex; gap: 12px;
+      font-size: 0.92rem; color: var(--gray-800);
+      line-height: 1.5;
+    }
+    .check {
+      width: 20px; height: 20px;
+      background: #FFF3ED;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      color: var(--accent);
+      font-size: 0.7rem; font-weight: 700;
+      margin-top: 2px;
+    }
+    .enterprise-cta-box {
+      text-align: center;
+      padding: 48px 40px;
+      border: 1px solid var(--gray-200);
+      border-radius: 14px;
+    }
+    .enterprise-cta-box h3 {
+      font-size: 1.3rem; font-weight: 800; margin-bottom: 10px;
+    }
+    .enterprise-cta-box p {
+      font-size: 0.9rem; color: var(--gray-600);
+      margin-bottom: 28px; line-height: 1.6;
+    }
+
+    /* ─── FAQ ─── */
+    .faq-list {
+      max-width: 640px; margin: 0 auto;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .faq-q {
+      width: 100%; background: none; border: none;
+      padding: 24px 0; text-align: left;
+      font-size: 0.95rem; font-weight: 600;
+      color: var(--black); cursor: pointer;
+      display: flex; justify-content: space-between;
+      align-items: center; font-family: var(--font);
+      gap: 16px;
+    }
+    .faq-q:hover { color: var(--accent); }
+    .faq-arrow {
+      font-size: 1rem; color: var(--gray-400);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .faq-a-inner {
+      padding: 0 0 24px;
+      font-size: 0.9rem; color: var(--gray-600); line-height: 1.7;
+    }
+    .faq-item.open .faq-a { max-height: 400px; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+    /* ─── FINAL CTA ─── */
+    .final {
+      padding: 100px 24px;
+      text-align: center;
+      background: var(--black);
+      color: var(--white);
+    }
+    .final h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 800; letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+    .final p {
+      font-size: 1rem; color: var(--gray-400);
+      max-width: 440px; margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+    .final .btn-primary {
+      padding: 16px 40px; font-size: 1rem;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid #2d2d2d;
+      padding: 48px 24px 32px;
+      color: var(--gray-400);
+    }
+    .footer-inner {
+      max-width: 1080px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      flex-wrap: wrap; gap: 32px;
+    }
+    .footer-col h4 {
+      font-size: 0.8rem; font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block; color: var(--gray-400);
+      text-decoration: none; font-size: 0.85rem;
+      margin-bottom: 10px;
+    }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      max-width: 1080px; margin: 32px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid #2d2d2d;
+      font-size: 0.78rem; text-align: center;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .nav-links a:not(.btn) { display: none; }
+      .hero { padding: 130px 20px 72px; }
+      .hero h1 { font-size: 2.2rem; }
+      .stats { grid-template-columns: 1fr; }
+      .stat:not(:last-child) { border-right: none; border-bottom: 1px solid var(--gray-200); }
+      .section { padding: 72px 20px; }
+      .pain-grid,
+      .courses-grid,
+      .test-grid { grid-template-columns: 1fr; }
+      .outcomes-grid { grid-template-columns: repeat(2, 1fr); }
+      .enterprise-box { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 480px) {
+      .outcomes-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">AI<span>Partners</span></a>
+    <div class="nav-links">
+      <a href="#courses">Khóa Học</a>
+      <a href="#testimonials">Học Viên</a>
+      <a href="#enterprise">Doanh Nghiệp</a>
+      <a href="#faq">FAQ</a>
+      <a href="#register" class="btn btn-primary">Đăng Ký</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-label">Các khoá học AI</span>
+  <h1>Hiểu đúng AI. Dùng đúng cách.</h1>
+  <p>Học thực chiến từ nền tảng đến chuyên ngành. Áp dụng ngay vào công việc hàng ngày — không lý thuyết suông.</p>
+  <p class="en">Practical AI training you can apply from day one. For individuals & teams.</p>
+  <div class="hero-actions">
+    <a href="#register" class="btn btn-primary btn-large">Đăng Ký Ngay</a>
+    <a href="#courses" class="btn btn-outline btn-large">Xem Khóa Học</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">100+</div>
+      <div class="stat-label">Học viên</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">95%</div>
+      <div class="stat-label">Hài lòng</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">70%</div>
+      <div class="stat-label">Hiệu suất tăng</div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="label">Vấn Đề</div>
+      <h2>Dùng AI nhưng chưa thấy khác biệt?</h2>
+      <p>You're using AI but not seeing real results.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="emoji">🎯</div>
+        <h3>Không hiểu cơ chế AI</h3>
+        <p>Kết quả lúc được lúc không — vì chưa hiểu bản chất hoạt động của AI.</p>
+      </div>
+      <div class="pain-card">
+        <div class="emoji">🔄</div>
+        <h3>Vẫn làm thủ công</h3>
+        <p>AI có thể cắt giảm 70% công việc lặp lại — nhưng bạn chưa biết cách.</p>
+      </div>
+      <div class="pain-card">
+        <div class="emoji">🤔</div>
+        <h3>AI cho kết quả sai</h3>
+        <p>Tra cứu ra thông tin bịa — vì chưa biết viết instruction đúng cách.</p>
+      </div>
+      <div class="pain-card">
+        <div class="emoji">⏳</div>
+        <h3>Sợ bị tụt hậu</h3>
+        <p>Đồng nghiệp đã dùng AI thành thạo — bạn vẫn chưa biết bắt đầu từ đâu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="section" id="courses">
+  <div class="container">
+    <div class="section-header">
+      <div class="label">Khóa Học</div>
+      <h2>Chọn khoá học phù hợp</h2>
+      <p>From AI fundamentals to industry-specific applications.</p>
+    </div>
+
+    <div class="courses-grid">
+      <!-- 1. Tự tin với AI -->
+      <div class="course-card">
+        <div class="course-top">
+          <span class="course-tag tag-fundamentals">Nền Tảng</span>
+          <h3>Tự Tin Với AI</h3>
+          <p>Hiểu bản chất AI, viết prompt hiệu quả, và tự tin sử dụng AI trong công việc hàng ngày.</p>
+        </div>
+        <div class="course-bottom">
+          <div class="course-meta">
+            <div class="meta-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              1 buổi — 3-4 giờ học & thực hành
+            </div>
+            <div class="meta-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              GV: Trương Việt Đức
+            </div>
+            <div class="meta-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Offline tại TP. HCM
+            </div>
+          </div>
+          <div class="topics">
+            <span class="topic">Cơ chế AI</span>
+            <span class="topic">Prompt Engineering</span>
+            <span class="topic">ChatGPT & Claude</span>
+            <span class="topic">NotebookLM</span>
+            <span class="topic">Thực hành</span>
+          </div>
+          <a href="#register" class="btn btn-primary" style="margin-top:auto;">Đăng Ký</a>
+        </div>
+      </div>
+
+      <!-- 2. AI Supply Chain -->
+      <div class="course-card">
+        <div class="course-top">
+          <span class="course-tag tag-specialized">Chuyên Ngành</span>
+          <h3>Ứng dụng AI vào Supply Chain Planning</h3>
+          <p>Ứng dụng AI vào hoạch định chuỗi cung ứng — demand planning, forecast, inventory management.</p>
+        </div>
+        <div class="course-bottom">
+          <div class="course-meta">
+            <div class="meta-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              1 buổi — 3-4 giờ học & thực hành
+            </div>
+            <div class="meta-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              GV: Lê Hoà Bình
+            </div>
+            <div class="meta-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Offline tại TP. HCM
+            </div>
+          </div>
+          <div class="topics">
+            <span class="topic">Demand Planning</span>
+            <span class="topic">Inventory</span>
+            <span class="topic">Forecast</span>
+            <span class="topic">Inventory Management</span>
+            <span class="topic">Thực hành</span>
+          </div>
+          <a href="#register" class="btn btn-primary" style="background:#4F46E5; margin-top:auto;">Đăng Ký</a>
+        </div>
+      </div>
+
+      <!-- 3. AI in Office -->
+      <div class="course-card">
+        <div class="course-top">
+          <span class="course-tag" style="background:#ECFDF5; color:#059669;">Ứng Dụng</span>
+          <h3>AI in Office</h3>
+          <p>Ứng dụng AI vào công việc văn phòng hàng ngày — tăng hiệu suất và tự động hoá tác vụ.</p>
+        </div>
+        <div class="course-bottom">
+          <div class="course-meta">
+            <div class="meta-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              3 buổi — học & thực hành
+            </div>
+            <div class="meta-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              GV: Lù Duy Nguyên
+            </div>
+            <div class="meta-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Online
+            </div>
+          </div>
+          <div class="topics">
+            <span class="topic">Email & Docs</span>
+            <span class="topic">Data Analysis</span>
+            <span class="topic">Automation</span>
+            <span class="topic">Reporting</span>
+            <span class="topic">Thực hành</span>
+          </div>
+          <a href="#register" class="btn btn-primary" style="background:#059669; margin-top:auto;">Đăng Ký</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="label">Kết Quả</div>
+      <h2>Sau khóa học, bạn sẽ...</h2>
+      <p>Real skills you take home after every session.</p>
+    </div>
+    <div class="outcomes-grid">
+      <div class="outcome">
+        <div class="emoji">🧠</div>
+        <h3>Hiểu bản chất AI</h3>
+        <p>Biết tại sao AI cho kết quả tốt hoặc không — và cách điều chỉnh.</p>
+      </div>
+      <div class="outcome">
+        <div class="emoji">⚡</div>
+        <h3>Tự động hoá</h3>
+        <p>Cắt giảm công việc manual và repeated — tiết kiệm hàng giờ mỗi ngày.</p>
+      </div>
+      <div class="outcome">
+        <div class="emoji">✅</div>
+        <h3>Tra cứu chính xác</h3>
+        <p>Viết instruction đúng để AI cho kết quả đáng tin — không "bịa".</p>
+      </div>
+      <div class="outcome">
+        <div class="emoji">🚀</div>
+        <h3>Tự tin với AI</h3>
+        <p>Set up và sử dụng AI bài bản — sẵn sàng cho kỷ nguyên AI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <div class="label">Học Viên</div>
+      <h2>Phản hồi thực từ lớp học</h2>
+      <p>Real feedback from our June 2026 cohort.</p>
+    </div>
+
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Nay em mới hiểu được cơ chế hoạt động của AI, hoá ra trước giờ mình dùng không thấy có gì khác biệt là có lý do cả. Nhờ lớp em biết thêm cách dùng NotebookLM cứu vớt cho sự học của em rồi!"</blockquote>
+        <div class="test-author">
+          <div class="avatar">HT</div>
+          <div>
+            <div class="author-name">Hà Thảo</div>
+            <div class="author-detail">Học viên · 13/06/2026</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Đúng là cần hiểu bản chất từ đầu để set up thế nào và thực chiến luôn giúp save nhiều thời gian. Em thấy viễn cảnh tương lai khi tận dụng AI để cắt giảm được nhiều công việc manual và repeated."</blockquote>
+        <div class="test-author">
+          <div class="avatar">CC</div>
+          <div>
+            <div class="author-name">Chau Chau Nguyen</div>
+            <div class="author-detail">Học viên · 13/06/2026</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Hôm nay là ngày nghỉ mà anh chị đã dành cho tụi em thời gian quý báu training kiến thức AI hiện đại, trân trọng biết ơn."</blockquote>
+        <div class="test-author">
+          <div class="avatar">PD</div>
+          <div>
+            <div class="author-name">Phương Dung</div>
+            <div class="author-detail">Học viên · 13/06/2026</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Wowww đúng là có instruction là khác biệt liền! Trước em dùng các bên khác, tra cứu ra kết quả bịa nhiều lắm. Giờ tra trên Cơ sở dữ liệu quốc gia ra đúng luôn."</blockquote>
+        <div class="test-author">
+          <div class="avatar">HT</div>
+          <div>
+            <div class="author-name">Hà Thảo</div>
+            <div class="author-detail">Ứng dụng AI tra cứu pháp luật · 14/06/2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTERPRISE -->
+<section class="section section-alt" id="enterprise">
+  <div class="container">
+    <div class="section-header">
+      <div class="label">Doanh Nghiệp</div>
+      <h2>Đào tạo AI cho cả đội ngũ</h2>
+      <p>Customized AI training for your organization.</p>
+    </div>
+
+    <div class="enterprise-box">
+      <ul class="enterprise-features">
+        <li><span class="check">✓</span> Chương trình tuỳ chỉnh theo ngành & quy mô doanh nghiệp</li>
+        <li><span class="check">✓</span> Đào tạo on-site hoặc online cho team phân tán</li>
+        <li><span class="check">✓</span> Đánh giá năng lực AI trước & sau khóa học</li>
+        <li><span class="check">✓</span> Hỗ trợ triển khai AI vào quy trình thực tế sau khóa</li>
+        <li><span class="check">✓</span> Ưu đãi đặc biệt cho nhóm từ 5 người</li>
+      </ul>
+      <div class="enterprise-cta-box">
+        <h3>Nhận tư vấn miễn phí</h3>
+        <p>Chúng tôi đánh giá nhu cầu đào tạo AI của tổ chức bạn và đề xuất lộ trình phù hợp.</p>
+        <a href="#register" class="btn btn-primary btn-large">Liên Hệ Tư Vấn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="label">FAQ</div>
+      <h2>Câu hỏi thường gặp</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Tôi chưa biết gì về AI, có học được không?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Hoàn toàn được. Khóa AI Fundamentals dành cho người mới bắt đầu — không cần kiến thức kỹ thuật. <em style="color:var(--gray-400)">Absolutely! No technical background needed.</em>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Khóa học có thực hành không?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          100% thực chiến. Mỗi buổi đều thực hành trực tiếp trên công cụ AI — bạn áp dụng ngay vào công việc thực tế. <em style="color:var(--gray-400)">100% hands-on with real AI tools.</em>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Học xong tôi có thể làm gì?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Viết prompt hiệu quả, tra cứu chính xác, tự động hoá công việc lặp lại, và ứng dụng AI vào chuyên ngành. Học viên đã giảm tới 70% thời gian cho công việc thủ công.
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Có hỗ trợ sau khóa học không?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Có. Bạn tham gia cộng đồng học viên BCP để hỏi đáp và cập nhật AI mới nhất. Doanh nghiệp có gói tư vấn triển khai riêng.
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Muốn đào tạo cho cả team thì sao?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Chương trình doanh nghiệp tuỳ chỉnh hoàn toàn — nội dung, lịch trình, hình thức học theo nhu cầu tổ chức. Ưu đãi cho nhóm từ 5 người.
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="register">
+  <h2>Sẵn sàng làm chủ AI?</h2>
+  <p>Đăng ký ngay để giữ chỗ khoá tiếp theo. Số lượng có hạn.</p>
+  <a href="https://bcp.global/ai-training/register" class="btn btn-primary btn-large">Đăng Ký Ngay</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>AIPartners Asia</h4>
+      <a href="#">One-Stop AI Transformation Hub</a>
+      <a href="mailto:huynh.nguyen@aipartners.asia">huynh.nguyen@aipartners.asia</a>
+    </div>
+    <div class="footer-col">
+      <h4>Khóa Học</h4>
+      <a href="#">Tự Tin Với AI</a>
+      <a href="#">AI trong Supply Chain</a>
+      <a href="#">AI in Office</a>
+    </div>
+    <div class="footer-col">
+      <h4>Doanh Nghiệp</h4>
+      <a href="#">Đào tạo theo yêu cầu</a>
+      <a href="#">Tư vấn triển khai AI</a>
+    </div>
+    <div class="footer-col">
+      <h4>Liên Hệ</h4>
+      <a href="mailto:huynh.nguyen@aipartners.asia">Email</a>
+      <a href="#">Hồ Chí Minh, Việt Nam</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 AIPartners Asia · All rights reserved
+  </div>
+</footer>
+
+</body>
+</html>
