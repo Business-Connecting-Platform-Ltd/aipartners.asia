@@ -12,7 +12,7 @@ const NavItems = () => {
   return [
     { label: t("nav.home"), href: "/" },
     { label: t("nav.aiBuilders"), href: "/aibuilders" },
-    { label: t("nav.aiTrainers"), href: "/ai-trainers" },
+    { label: t("nav.aiTrainers"), href: "/ai-training-classes" },
     { label: t("nav.aiWorkforce"), href: "/ai-workforce" },
     { label: t("nav.aiStore"), href: "/ai-store" },
     { label: t("nav.factoryTour"), href: "/factory-tour/partner" },

@@ -162,16 +162,14 @@ export default function AITrainers() {
 
   const enterpriseFeatures = [
     "Chương trình tuỳ chỉnh theo ngành & quy mô doanh nghiệp",
-    "Đào tạo on-site hoặc online cho team phân tán",
+    "Đào tạo on-site hoặc online",
     "Đánh giá năng lực AI trước & sau khóa học",
-    "Hỗ trợ triển khai AI vào quy trình thực tế sau khóa",
-    "Ưu đãi đặc biệt cho nhóm từ 5 người",
   ];
 
   const faqs = [
     {
       q: "Tôi chưa biết gì về AI, có học được không?",
-      a: "Hoàn toàn được. Khóa AI Fundamentals dành cho người mới bắt đầu — không cần kiến thức kỹ thuật.",
+      a: "Hoàn toàn được. Khóa Tự Tin Với AI dành cho người mới bắt đầu — không cần kiến thức kỹ thuật.",
     },
     {
       q: "Khóa học có thực hành không?",
@@ -187,7 +185,7 @@ export default function AITrainers() {
     },
     {
       q: "Muốn đào tạo cho cả team thì sao?",
-      a: "Chương trình doanh nghiệp tuỳ chỉnh hoàn toàn — nội dung, lịch trình, hình thức học theo nhu cầu tổ chức. Ưu đãi cho nhóm từ 5 người.",
+      a: "Chương trình doanh nghiệp tuỳ chỉnh hoàn toàn — nội dung, lịch trình, hình thức học theo nhu cầu tổ chức.",
     },
   ];
 

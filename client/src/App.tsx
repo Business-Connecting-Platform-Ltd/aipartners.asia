@@ -35,7 +35,7 @@ function Router() {
           <Switch>
             <Route path="/" component={Home} />
             <Route path="/aibuilders" component={AIBuilders} />
-            <Route path="/ai-trainers" component={AITrainers} />
+            <Route path="/ai-training-classes" component={AITrainers} />
             <Route path="/ai-workforce" component={AIWorkforce} />
             <Route path="/ai-store" component={AIStore} />
             <Route path="/factory-tour" component={FactoryTour} />
